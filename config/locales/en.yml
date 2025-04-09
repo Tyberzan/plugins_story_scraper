@@ -1,0 +1,36 @@
+en:
+  site_settings:
+    buildnet_enabled: "Enable Buildnet integration"
+    buildnet_api_url: "Buildnet API URL"
+    buildnet_api_key: "Buildnet API Key"
+    buildnet_sync_topics: "Sync topics to Buildnet"
+    buildnet_sync_users: "Sync users to Buildnet"
+    buildnet_sync_interval: "Sync interval in minutes (0 for immediate)"
+    buildnet_sync_immediately: "Sync topics and users immediately after creation/update"
+    buildnet_allowed_categories: "Only sync topics from these categories (leave empty for all)"
+  
+  buildnet:
+    title: "Buildnet Integration"
+    settings: "Settings"
+    logs: "Sync Logs"
+    test_connection: "Test Connection"
+    sync_now: "Sync Now"
+    sync_topic: "Sync Topic"
+    sync_user: "Sync User"
+    status:
+      success: "Success"
+      failure: "Failure"
+    log:
+      id: "ID"
+      entity_type: "Type"
+      entity_id: "Entity ID"
+      action: "Action"
+      status: "Status"
+      message: "Message"
+      created_at: "Created At"
+    notifications:
+      connection_success: "Successfully connected to Buildnet"
+      connection_failure: "Failed to connect to Buildnet: %{message}"
+      sync_started: "Sync started"
+      sync_completed: "Sync completed successfully"
+      sync_failed: "Sync failed: %{message}" 

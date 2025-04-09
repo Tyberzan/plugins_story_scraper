@@ -1,0 +1,118 @@
+<DSection @pageClass="admin-buildnet">
+  <h1>{{i18n "buildnet.title"}}</h1>
+
+  <div class="admin-controls">
+    <div class="controls">
+      <button
+        type="button"
+        class="btn btn-primary test-connection-button"
+        {{on "click" this.testConnection}}
+        disabled={{this.testingConnection}}
+      >
+        {{i18n "buildnet.test_connection"}}
+        {{#if this.testingConnection}}
+          {{loading-spinner size="small"}}
+        {{/if}}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-default sync-now-button"
+        {{on "click" this.syncNow}}
+        disabled={{this.loading}}
+      >
+        {{i18n "buildnet.sync_now"}}
+        {{#if this.loading}}
+          {{loading-spinner size="small"}}
+        {{/if}}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-default refresh-logs-button"
+        {{on "click" this.refreshLogs}}
+        disabled={{this.loading}}
+      >
+        {{d-icon "sync"}}
+        {{#if this.loading}}
+          {{loading-spinner size="small"}}
+        {{/if}}
+      </button>
+    </div>
+  </div>
+
+  {{#if this.connectionStatus}}
+    <div class="alert {{if this.connectionStatus.success 'alert-success' 'alert-error'}}">
+      {{this.connectionStatus.message}}
+    </div>
+  {{/if}}
+
+  <div class="admin-controls">
+    <div class="controls">
+      <div class="inline-form">
+        <label>{{i18n "buildnet.sync_topic"}}</label>
+        <Input @type="number" @value={{this.topicId}} placeholder="Topic ID" />
+        <button
+          type="button"
+          class="btn btn-default"
+          {{on "click" this.syncTopic}}
+          disabled={{or this.loading (not this.topicId)}}
+        >
+          {{i18n "buildnet.sync_topic"}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-controls">
+    <div class="controls">
+      <div class="inline-form">
+        <label>{{i18n "buildnet.sync_user"}}</label>
+        <Input @type="number" @value={{this.userId}} placeholder="User ID" />
+        <button
+          type="button"
+          class="btn btn-default"
+          {{on "click" this.syncUser}}
+          disabled={{or this.loading (not this.userId)}}
+        >
+          {{i18n "buildnet.sync_user"}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <h2>{{i18n "buildnet.logs"}}</h2>
+
+  <table class="buildnet-logs">
+    <thead>
+      <tr>
+        <th>{{i18n "buildnet.log.id"}}</th>
+        <th>{{i18n "buildnet.log.entity_type"}}</th>
+        <th>{{i18n "buildnet.log.entity_id"}}</th>
+        <th>{{i18n "buildnet.log.action"}}</th>
+        <th>{{i18n "buildnet.log.status"}}</th>
+        <th>{{i18n "buildnet.log.message"}}</th>
+        <th>{{i18n "buildnet.log.created_at"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.logs as |log|}}
+        <tr>
+          <td>{{log.id}}</td>
+          <td>{{log.entity_type}}</td>
+          <td>{{log.entity_id}}</td>
+          <td>{{log.action}}</td>
+          <td class="status status-{{log.status}}">
+            {{i18n (concat "buildnet.status." log.status)}}
+          </td>
+          <td class="message">{{log.message}}</td>
+          <td>{{format-date log.created_at}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="7">{{i18n "buildnet.no_logs"}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</DSection>

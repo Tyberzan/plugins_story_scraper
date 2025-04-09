@@ -1,0 +1,27 @@
+plugins:
+  buildnet_enabled:
+    default: false
+    client: true
+  buildnet_api_url:
+    default: "https://api.buildnet.example.com"
+    client: false
+  buildnet_api_key:
+    default: ""
+    client: false
+  buildnet_sync_topics:
+    default: true
+    client: true
+  buildnet_sync_users:
+    default: true
+    client: true
+  buildnet_sync_interval:
+    default: 1440
+    client: false
+  buildnet_sync_immediately:
+    default: true
+    client: true
+  buildnet_allowed_categories:
+    default: ""
+    client: false
+    type: list
+    list_type: category 
