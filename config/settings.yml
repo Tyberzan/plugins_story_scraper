@@ -1,26 +1,26 @@
 plugins:
-  buildnet_enabled:
+  story_builder_enabled:
     default: false
     client: true
-  buildnet_api_url:
-    default: "https://api.buildnet.example.com"
+  story_source_url:
+    default: "https://api.mercistory.com"
     client: false
-  buildnet_api_key:
+  story_api_key:
     default: ""
     client: false
-  buildnet_sync_topics:
+  story_sync_topics:
     default: true
     client: true
-  buildnet_sync_users:
+  story_sync_users:
     default: true
     client: true
-  buildnet_sync_interval:
+  story_sync_interval:
     default: 1440
     client: false
-  buildnet_sync_immediately:
+  story_sync_immediately:
     default: true
     client: true
-  buildnet_allowed_categories:
+  story_allowed_categories:
     default: ""
     client: false
     type: list
